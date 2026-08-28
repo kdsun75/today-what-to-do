@@ -1,0 +1,11 @@
+.weekend-button {
+  border-style: solid;
+  cursor: pointer;
+}
+
+.weekend-button:hover,
+.weekend-button[aria-pressed='true'] {
+  color: white;
+  background: var(--green);
+  border-color: var(--green);
+}
