@@ -46,16 +46,17 @@ describe('행사 보드', () => {
     await user.type(screen.getByPlaceholderText('행사, 장소, 동네를 검색해 보세요'), '재즈')
     await user.click(screen.getByRole('button', { name: '이번 주말만 보기' }))
 
-    expect(screen.getByRole('status')).toHaveTextContent('이번 주말에는 등록된 행사가 없어요')
-    expect(screen.getByRole('status')).toHaveTextContent('8월 29일–8월 30일')
+    const emptyState = screen.getByText('이번 주말에는 등록된 행사가 없어요').closest('[role="status"]')
+    expect(emptyState).toHaveTextContent('이번 주말에는 등록된 행사가 없어요')
+    expect(emptyState).toHaveTextContent('8월 29일–8월 30일')
 
     await user.click(screen.getByRole('button', { name: '이번 주말만 보기' }))
     expect(screen.getByRole('article')).toHaveTextContent('노을 아래 재즈 피크닉')
   })
 
-  it('나머지 확장 기능을 명확한 비활성 자리표시자로 제공한다', () => {
+  it('확장 기능과 사용 가능한 즐겨찾기를 제공한다', () => {
     render(<App />)
-    expect(screen.getAllByRole('button', { name: /즐겨찾기/ })[0]).toBeDisabled()
-    expect(screen.getAllByRole('button', { name: /ICS 일정 내려받기/ })[0]).toBeDisabled()
+    expect(screen.getAllByRole('button', { name: /즐겨찾기 추가/ })[0]).toBeEnabled()
+    expect(screen.getAllByRole('button', { name: /캘린더에 추가/ })[0]).toBeEnabled()
   })
 })
