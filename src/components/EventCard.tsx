@@ -2,7 +2,7 @@ import { Calendar, Clock3, MapPin } from 'lucide-react'
 import { format, parseISO } from 'date-fns'
 import { ko } from 'date-fns/locale'
 import { FavoritesFeature } from '../features/favorites'
-import { IcsDownloadFeature } from '../features/ics-download'
+import { CalendarFeature } from '../features/calendar'
 import type { LocalEvent } from '../types'
 
 export function EventCard({ event }: { event: LocalEvent }) {
@@ -14,7 +14,7 @@ export function EventCard({ event }: { event: LocalEvent }) {
       <div className="card-visual" style={{ '--accent': event.accent } as React.CSSProperties}>
         <span className="category-chip">{event.category}</span>
         <span className="event-emoji" aria-hidden="true">{event.emoji}</span>
-        <div className="card-actions"><FavoritesFeature eventId={event.id} mode="card" /><IcsDownloadFeature event={event} mode="card" /></div>
+        <div className="card-actions"><FavoritesFeature eventId={event.id} mode="card" /><CalendarFeature event={event} mode="card" /></div>
       </div>
       <div className="card-body">
         <p className="neighborhood">{event.neighborhood}</p>
