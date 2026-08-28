@@ -23,10 +23,10 @@ describe('행사 보드', () => {
     expect(screen.getAllByRole('article')).toHaveLength(2)
   })
 
-  it('확장 기능을 명확한 비활성 자리표시자로 제공한다', () => {
+  it('확장 기능과 사용 가능한 즐겨찾기를 제공한다', () => {
     render(<App />)
     expect(screen.getByRole('button', { name: /이번 주말만/ })).toBeDisabled()
-    expect(screen.getAllByRole('button', { name: /즐겨찾기/ })[0]).toBeDisabled()
+    expect(screen.getAllByRole('button', { name: /즐겨찾기 추가/ })[0]).toBeEnabled()
     expect(screen.getAllByRole('button', { name: /캘린더에 추가/ })[0]).toBeEnabled()
   })
 })
