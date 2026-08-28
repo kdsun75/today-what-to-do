@@ -27,6 +27,6 @@ describe('행사 보드', () => {
     render(<App />)
     expect(screen.getByRole('button', { name: /이번 주말만/ })).toBeDisabled()
     expect(screen.getAllByRole('button', { name: /즐겨찾기/ })[0]).toBeDisabled()
-    expect(screen.getAllByRole('button', { name: /ICS 일정 내려받기/ })[0]).toBeDisabled()
+    expect(screen.getAllByRole('button', { name: /캘린더에 추가/ })[0]).toBeEnabled()
   })
 })

@@ -3,7 +3,7 @@ import { useMemo, useState } from 'react'
 import { EventCard } from './components/EventCard'
 import { events } from './data/events'
 import { FavoritesFeature } from './features/favorites'
-import { IcsDownloadFeature } from './features/ics-download'
+import { CalendarFeature } from './features/calendar'
 import { WeekendOnlyFeature } from './features/weekend-only'
 import { useEventStore } from './store/useEventStore'
 import type { Category } from './types'
@@ -43,7 +43,7 @@ export default function App() {
           <div className="section-heading"><div><p className="eyebrow">이번 주, 우리 동네</p><h2>가까이에서 만나는 즐거움</h2></div><p>총 {events.length}개의 행사가 기다리고 있어요</p></div>
           <div className="controls">
             <label className="search-box"><Search size={20} aria-hidden="true"/><span className="sr-only">행사 검색</span><input value={query} onChange={(e) => setQuery(e.target.value)} placeholder="행사, 장소, 동네를 검색해 보세요"/></label>
-            <div className="feature-controls"><WeekendOnlyFeature enabled={weekendOnly} onChange={setWeekendOnly}/><FavoritesFeature/><IcsDownloadFeature events={filteredEvents}/></div>
+            <div className="feature-controls"><WeekendOnlyFeature enabled={weekendOnly} onChange={setWeekendOnly}/><FavoritesFeature/><CalendarFeature events={filteredEvents}/></div>
           </div>
           <div className="category-list" aria-label="카테고리 필터">{categories.map((item) => <button key={item} className={category === item ? 'active' : ''} onClick={() => setCategory(item)} type="button">{item}</button>)}</div>
 
